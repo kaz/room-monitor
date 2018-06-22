@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+
+  collector:
+    build: .
+    environment:
+      - TOKEN=dummy
+
+  influxdb:
+    image: influxdb
+    volumes:
+      - /var/lib/influxdb:/var/lib/influxdb
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - 80:3000
+    volumes:
+      - /var/lib/grafana:/var/lib/grafana
